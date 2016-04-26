@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
+	<title>Welcome to API OPiSS</title>
 
 	<style type="text/css">
 
@@ -68,61 +68,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container">
-	<h1>Welcome to CodeIgniter!</h1>
+	<h1>Welcome to API OPiSS</h1>
 
 	<div id="body">
-		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
+		<p>The page you are looking at is being generated dynamically by Admin VNS.</p>
 
-		<p>If you would like to edit this page you'll find it located at:</p>
-		<code>application/views/welcome_message.php</code>
+		<p>If you would like to find out resource of the data from VNS you'll find it placed at:</p>
+		<code>
+		<form method="post" action="<?php echo base_url() ?>index.php/api-opiss/">
+			OID : <input type="text" name="oid" placeholder="oid please..." />
+			
+			<input type="submit" value="Show data">
+		</form>		
+		
+		</code>
 
-		<p>The corresponding controller for this page is found at:</p>
-		<code>application/controllers/Welcome.php</code>
+		<p>The following of json file for this page is given on below :</p>
+		<code>http://172.16.60.11/api_opiss/results.json</code>
 
-		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
-	<?php
-		foreach($query as $dt){
-			  $item[] = array(
-			   "no subform"=>$dt["subform"],
-			   "pelanggan"=>$dt["nama"],
-			   "emailnya"=>$dt["email"],
-			   "address"=>$dt["alamat"]   
-			);   
-		}
-	 $json = array(
-		'Status' => 'Successfully to create data',
-		'weleh' => array('item' => $item)
-	   );
-	
-	$datanya = json_encode($json);
-	$input_bagus = preg_replace('/"([a-zA-Z_]+[a-zA-Z0-9_]*)":/','$1:',$datanya);
-	echo $input_bagus; 
-	echo "<br />";
-	echo "<br />";
+		<p>Please you should start by reading the <a href="#">User Guide of VNS</a>.</p>
+		<?php
+		//$oid = '765562';
+		?>
 
-$jsonIterator = new RecursiveIteratorIterator(
-    new RecursiveArrayIterator(json_decode($datanya, TRUE)),
-    RecursiveIteratorIterator::SELF_FIRST);
-
-foreach ($jsonIterator as $key => $val) {
-    if(is_array($val)) {
-        echo "$key:\n";
-    } else {
-        echo "$key => $val\n";
-    }
-}
-	
-$json = json_decode($datanya, true);
-//$subform = $json['item'];
-//echo $subform['no_subform'];
-//echo $subform."<br />";
-$nama = $json{'weleh'}{'item'}{0}{'pelanggan'};
-echo "<br />".$nama.', ';
-$noid = $json['weleh']['item'][0]['emailnya'];
-echo $noid;
-//secho $json['item'];
-	
-   ?>		
+		<!-- <a href="<?php //echo base_url() ?>index.php/api-opiss/<?php //echo $oid ?>">test/<?php //echo $oid ?></a> -->
 	</div>
 	
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>

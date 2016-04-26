@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Json extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,18 +20,12 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
-	}
-
-	public function test()
-	{
 		$this->load->database();
 		$this->load->model('model_tampil');
 		
-		$oid = $this->input->post('oid');
 		$dataemail = 'it-rudy';
-		
-		$data['query'] = $this->model_tampil->datanya($dataemail,$oid);
+		$data['query'] = $this->model_tampil->datanya($dataemail);
 		$this->load->view('api_opiss',$data);
-	}	
+	}
+	
 }
