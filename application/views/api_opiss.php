@@ -148,9 +148,7 @@ echo $address;
 //secho $json['item'];
 echo "<br />";
 echo "<a href=".base_url()."results.json>json file</a>";
-for($i = 0; $i < 10; ++$i) {
-	//echo "<br />".$address." - ".$email;
-}
+
 	
 }
 
