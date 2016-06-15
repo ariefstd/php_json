@@ -137,6 +137,15 @@ $json = json_decode($datanya, true);
 //echo $subform."<br />";
 echo "<br />";
 echo "<br />";
+foreach($json_a['weleh']['item'] as $p)
+{
+	$i=$i+1;
+	$merchant_code = $p["nama pelanggan"];
+	$merchant_name = $p["email pelanggan"];	
+		echo $i.". ".$merchant_code." : ".$merchant_name;	
+		echo "<br />";
+}
+
 $subform = $json{'weleh'}{'item'}{0}{'no subform'};
 echo "<br />".$subform.', ';
 $nama = $json['weleh']['item'][0]['nama pelanggan'];
@@ -148,7 +157,6 @@ echo $address;
 //secho $json['item'];
 echo "<br />";
 echo "<a href=".base_url()."results.json>json file</a>";
-
 	
 }
 
